@@ -2,3 +2,4 @@
 bin
 cmake_build_debug
 lib/CUtils
+lib/xxHash/lib
