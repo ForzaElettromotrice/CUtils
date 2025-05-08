@@ -22,7 +22,7 @@ add_library(CUtils ${LIB_TYPE}
         src/queue.c
         src/hashmap.c
         src/logger.c
-        include/CUtils/main.c)
+        src/main.c)
 
 
 if (BUILD_SHARED)
@@ -40,7 +40,7 @@ target_include_directories(CUtils
         PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src/include)
 
 target_link_libraries(
-        CUtils PRIVATE xxHash::xxhash
+        CUtils PUBLIC xxHash::xxhash
 )
 
 
@@ -48,7 +48,7 @@ add_executable(CUtilsEx
         src/queue.c
         src/hashmap.c
         src/logger.c
-        include/CUtils/main.c)
+        src/main.c)
 
 target_include_directories(CUtilsEx
         PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include/CUtils
@@ -59,5 +59,5 @@ set_target_properties(CUtilsEx PROPERTIES
         OUTPUT_NAME CUtils)
 
 target_link_libraries(
-        CUtilsEx PRIVATE xxHash::xxhash
+        CUtilsEx PUBLIC xxHash::xxhash
 )

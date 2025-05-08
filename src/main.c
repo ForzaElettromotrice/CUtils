@@ -4,7 +4,7 @@
 
 #include <stdlib.h>
 
-#include "logger.h"
+#include "../include/CUtils/logger.h"
 
 int main()
 {
