@@ -20,5 +20,5 @@
 
 #define logE(file, msg, ...) logE_impl(file, __FILE__, __LINE__, msg, ##__VA_ARGS__)
 
-void logE_impl(FILE *file, const char *msg, ...);
+void logE_impl(FILE *file, const char *file_name, const int line, const char *msg, ...);
 void logD(FILE *file, const char *msg, ...);

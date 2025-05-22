@@ -5,11 +5,11 @@
 #include "logger.h"
 
 
-void logE_impl(FILE *file, const char *msg, ...)
+void logE_impl(FILE *file, const char *file_name, const int line, const char *msg, ...)
 {
     va_list args;
     va_start(args, msg);
-    fprintf(file, RED "Error in %s at line %d: " RESET, __FILE_NAME__, __LINE__);
+    fprintf(file, "Errore in %s alla linea %d: ", file_name, line);
     vfprintf(file, msg, args);
     va_end(args);
 }
