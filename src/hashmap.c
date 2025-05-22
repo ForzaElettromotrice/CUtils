@@ -6,7 +6,6 @@
 
 #include <errno.h>
 #include <logger.h>
-#include <stdbool.h>
 #include <stdint.h>
 #include <string.h>
 #include <xxhash.h>
