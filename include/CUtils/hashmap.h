@@ -4,22 +4,12 @@
 
 #pragma once
 
-#include <stdint.h>
 #include <stdlib.h>
-#include <string.h>
-#include <errno.h>
-#include <stdbool.h>
-
-#include <xxhash.h>
 
 
-typedef struct Hashmap
-{
-    char **keys;
-    void **values;
-} Hashmap_t;
+typedef struct Hashmap Hashmap_t;
 
-int initHashmap(Hashmap_t *hashmap);
+int initHashmap(Hashmap_t *hashmap, size_t dim);
 void freeHashmap(const Hashmap_t *hashmap);
 
 int setByKey(const char *key, const void *val, size_t size, const Hashmap_t *hashmap);
