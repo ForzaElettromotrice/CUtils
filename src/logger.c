@@ -5,7 +5,7 @@
 #include "logger.h"
 
 
-void logE(FILE *file, const char *msg, ...)
+void logE_impl(FILE *file, const char *msg, ...)
 {
     va_list args;
     va_start(args, msg);
