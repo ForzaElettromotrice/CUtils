@@ -9,7 +9,7 @@ void logE_impl(FILE *file, const char *file_name, const int line, const char *ms
 {
     va_list args;
     va_start(args, msg);
-    fprintf(file, "Errore in %s alla linea %d: ", file_name, line);
+    fprintf(file, "Error in %s at line %d: ", file_name, line);
     vfprintf(file, msg, args);
     va_end(args);
 }
