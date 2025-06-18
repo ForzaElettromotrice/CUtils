@@ -10,13 +10,6 @@
 #include <string.h>
 #include <xxhash.h>
 
-struct Hashmap
-{
-    size_t n;
-    size_t dim;
-    uint64_t *keys;
-    void **values;
-};
 
 int initHashmap(Hashmap_t *hashmap, size_t dim)
 {
