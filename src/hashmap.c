@@ -16,6 +16,7 @@ int initHashmap(Hashmap_t *hashmap, size_t dim)
     if (dim == 0)
         dim = 512;
     hashmap->dim = dim;
+    hashmap->n = 0;
     hashmap->keys = calloc(dim, sizeof(uint64_t));
     if (!hashmap->keys)
     {
@@ -164,7 +165,6 @@ int setByStr(const char *key, const void *val, const size_t size, Hashmap_t *has
 
 void *getByHash(const uint64_t hashKey, const Hashmap_t *hashmap)
 {
-
     uint64_t hashIdx = hashKey % hashmap->dim;
 
     uint64_t found = hashmap->keys[hashIdx];
