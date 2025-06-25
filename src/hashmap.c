@@ -10,7 +10,6 @@
 #include <string.h>
 #include <xxhash.h>
 
-
 int initHashmap(Hashmap_t *hashmap, size_t dim)
 {
     if (dim == 0)
