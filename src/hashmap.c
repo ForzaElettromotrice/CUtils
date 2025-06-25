@@ -16,6 +16,7 @@ int initHashmap(Hashmap_t *hashmap, size_t dim)
     if (dim == 0)
         dim = 512;
     hashmap->dim = dim;
+    hashmap->n = 0;
     hashmap->keys = calloc(dim, sizeof(uint64_t));
     if (!hashmap->keys)
     {
@@ -123,11 +124,8 @@ void checkBalance(Hashmap_t *hashmap)
     free(toMoveV);
 }
 
-
-int setByKey(const char *key, const void *val, const size_t size, Hashmap_t *hashmap)
+int setByHash(const uint64_t hashKey, const void *val, const size_t size, Hashmap_t *hashmap)
 {
-    const uint64_t hashKey = XXH3_64bits(key, strlen(key));
-
     size_t hashIdx = hashKey % hashmap->dim;
 
     uint64_t found = hashmap->keys[hashIdx++];
@@ -159,10 +157,14 @@ int setByKey(const char *key, const void *val, const size_t size, Hashmap_t *has
 
     return EXIT_SUCCESS;
 }
-void *getByKey(const char *key, const Hashmap_t *hashmap)
+int setByStr(const char *key, const void *val, const size_t size, Hashmap_t *hashmap)
 {
     const uint64_t hashKey = XXH3_64bits(key, strlen(key));
+    return setByHash(hashKey, val, size, hashmap);
+}
 
+void *getByHash(const uint64_t hashKey, const Hashmap_t *hashmap)
+{
     uint64_t hashIdx = hashKey % hashmap->dim;
 
     uint64_t found = hashmap->keys[hashIdx];
@@ -179,7 +181,11 @@ void *getByKey(const char *key, const Hashmap_t *hashmap)
 
     return NULL;
 }
-
+void *getByStr(const char *key, const Hashmap_t *hashmap)
+{
+    const uint64_t hashKey = XXH3_64bits(key, strlen(key));
+    return getByHash(hashKey, hashmap);
+}
 void removeKey(const char *key, const Hashmap_t *hashmap)
 {
     const uint64_t hashKey = XXH3_64bits(key, strlen(key));
