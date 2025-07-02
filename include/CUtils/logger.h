@@ -6,7 +6,10 @@
 
 #include <stdio.h>
 
+#ifdef __cplusplus
 extern "C" {
+#endif
+
 #define RED       "\033[31m"
 #define GREEN     "\033[32m"
 #define YELLOW    "\033[33m"
@@ -21,4 +24,6 @@ extern "C" {
 
 void logE_impl(FILE *file, const char *file_name, int line, const char *msg, ...);
 void logD(FILE *file, const char *msg, ...);
+#ifdef __cplusplus
 }
+#endif

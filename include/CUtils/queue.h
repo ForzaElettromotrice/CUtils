@@ -7,7 +7,10 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
+#ifdef __cplusplus
 extern "C" {
+#endif
+
 typedef struct Node
 {
     void *val;
@@ -30,4 +33,7 @@ int pushQueue(const void *value, size_t size, Queue_t *queue);
 int popQueue(Queue_t *queue, void **val, size_t *size);
 
 bool isEmpty(Queue_t *queue);
+
+#ifdef __cplusplus
 }
+#endif

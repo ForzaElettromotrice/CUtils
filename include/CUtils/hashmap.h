@@ -7,7 +7,10 @@
 #include <stdint.h>
 #include <stdlib.h>
 
+#ifdef __cplusplus
 extern "C" {
+#endif
+
 typedef struct Hashmap
 {
     size_t n;
@@ -26,4 +29,7 @@ void *getByHash(uint64_t hashKey, const Hashmap_t *hashmap);
 void *getByStr(const char *key, const Hashmap_t *hashmap);
 
 void removeKey(const char *key, const Hashmap_t *hashmap);
+#ifdef __cplusplus
 }
+#endif
+
