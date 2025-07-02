@@ -5,11 +5,9 @@
 #pragma once
 
 #include <stdlib.h>
-#include <errno.h>
-#include <string.h>
-#include <stdint.h>
 #include <stdbool.h>
 
+extern "C" {
 typedef struct Node
 {
     void *val;
@@ -32,3 +30,4 @@ int pushQueue(const void *value, size_t size, Queue_t *queue);
 int popQueue(Queue_t *queue, void **val, size_t *size);
 
 bool isEmpty(Queue_t *queue);
+}

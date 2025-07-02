@@ -21,8 +21,7 @@ add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/lib/xxHash/cmake_unofficial ${CMAKE
 add_library(CUtils ${LIB_TYPE}
         src/queue.c
         src/hashmap.c
-        src/logger.c
-        src/main.c)
+        src/logger.c)
 
 
 if (BUILD_SHARED)
@@ -41,23 +40,4 @@ target_include_directories(CUtils
 
 target_link_libraries(
         CUtils PUBLIC xxHash::xxhash
-)
-
-
-add_executable(CUtilsEx
-        src/queue.c
-        src/hashmap.c
-        src/logger.c
-        src/main.c)
-
-target_include_directories(CUtilsEx
-        PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include/CUtils
-        PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src/include)
-
-set_target_properties(CUtilsEx PROPERTIES
-        RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/bin
-        OUTPUT_NAME CUtils)
-
-target_link_libraries(
-        CUtilsEx PUBLIC xxHash::xxhash
 )

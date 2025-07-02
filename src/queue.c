@@ -2,6 +2,8 @@
 // Created by f3m on 07/05/25.
 //
 
+#include <string.h>
+
 #include "queue.h"
 
 

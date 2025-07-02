@@ -4,6 +4,9 @@
 
 #include "logger.h"
 
+#include <stdarg.h>
+#include <time.h>
+
 
 void logE_impl(FILE *file, const char *file_name, const int line, const char *msg, ...)
 {
